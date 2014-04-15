@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 
 import com.intel.spark.log.model.App;
+import com.intel.spark.log.model.NodePrinter;
 import com.intel.spark.log.processor.Processor;
 
 public class Main {
@@ -24,20 +25,20 @@ public class Main {
 			App app = new App();
 			while ((line = br.readLine()) != null) {
 				Processor processor = Matcher.build(line);
-				if(processor==null){
+				if (processor == null) {
 					continue;
 				}
 				processor.apply(line).process(app);
 			}
-			
+			NodePrinter.print(app);
 		} catch (Exception e) {
 			e.printStackTrace();
 			return;
-		}finally{
-			if(br!=null){
+		} finally {
+			if (br != null) {
 				br.close();
 			}
 		}
-		
+
 	}
 }
