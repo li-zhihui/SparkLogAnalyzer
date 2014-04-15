@@ -9,22 +9,21 @@ import com.intel.spark.log.model.Node;
 import com.intel.spark.log.model.Stage;
 import com.intel.spark.log.model.Task;
 import com.intel.spark.log.model.TaskSet;
+import com.intel.spark.log.util.Util;
 
 public abstract class BaseProcessor implements Processor {
 
 	String logLine;
 	long time;
 
-	public Processor apply(String logLine) throws ParseException {
+	public Processor apply(String logLine) throws Exception {
 		this.logLine = logLine;
 		time = getTime();
 		return this;
 	}
 
-	private long getTime() throws ParseException {
-		String dateStr = logLine.substring(0, 17);
-		SimpleDateFormat format = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-		return format.parse("20" + dateStr).getTime();
+	private long getTime() throws Exception {
+		return Util.transformTime(logLine.substring(0, 17));
 	}
 
 	public void initNode(Node node) {

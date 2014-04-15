@@ -4,8 +4,9 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 
 import com.intel.spark.log.model.App;
-import com.intel.spark.log.model.NodePrinter;
 import com.intel.spark.log.processor.Processor;
+import com.intel.spark.log.util.NodePrinter;
+import com.intel.spark.log.util.TimeAdjuster;
 
 public class Main {
 	public static void main(String[] args) throws Exception {
@@ -24,12 +25,14 @@ public class Main {
 			String line;
 			App app = new App();
 			while ((line = br.readLine()) != null) {
+				TimeAdjuster.recordTime(line);
 				Processor processor = Matcher.build(line);
 				if (processor == null) {
 					continue;
 				}
 				processor.apply(line).process(app);
 			}
+			TimeAdjuster.adjustTime(app);
 			NodePrinter.print(app);
 		} catch (Exception e) {
 			e.printStackTrace();

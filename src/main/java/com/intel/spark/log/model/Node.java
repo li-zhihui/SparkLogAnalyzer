@@ -16,11 +16,13 @@ public abstract class Node<T1, T2> {
 	private List<T1> children;
 	private String str;
 	private Node<T1, T2> parent;
-	long startTime;
-	long endTime;
-	String name;
-	String id;
-	String duration;
+	private long startTime;
+	private long endTime;
+	private String name;
+	private String id;
+	private String duration;
+	private long jobStartTime;
+	private long jobEndTime;
 
 	public List<T1> getChildren() {
 		return children;
@@ -46,7 +48,6 @@ public abstract class Node<T1, T2> {
 		this.parent = parent;
 	}
 
-	
 	public long getStartTime() {
 		return startTime;
 	}
@@ -63,7 +64,6 @@ public abstract class Node<T1, T2> {
 		this.endTime = endTime;
 	}
 
-	
 	public String getName() {
 		return name;
 	}
@@ -71,7 +71,7 @@ public abstract class Node<T1, T2> {
 	public void setName(String name) {
 		this.name = name;
 	}
-	
+
 	public String getId() {
 		return id;
 	}
@@ -88,15 +88,31 @@ public abstract class Node<T1, T2> {
 		this.duration = duration;
 	}
 
+	public long getJobStartTime() {
+		return jobStartTime;
+	}
+
+	public void setJobStartTime(long jobStartTime) {
+		this.jobStartTime = jobStartTime;
+	}
+
+	public long getJobEndTime() {
+		return jobEndTime;
+	}
+
+	public void setJobEndTime(long jobEndTime) {
+		this.jobEndTime = jobEndTime;
+	}
+
 	public T1 getLastChild() throws Exception {
 		if (children == null || children.isEmpty()) {
 			throw new Exception(this + " hasn't child, can't be process.");
 		}
 		return children.get(children.size() - 1);
 	}
-	
-	public void addNewChild(T1 t){
-		if(children==null){
+
+	public void addNewChild(T1 t) {
+		if (children == null) {
 			children = new ArrayList<T1>();
 		}
 		children.add(t);
