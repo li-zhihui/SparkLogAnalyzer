@@ -7,7 +7,7 @@ SparkLogAnalyzer is a tool could analyse Apache Spark log to output job, stage, 
 Quick start
 ---------------
 1 mvn install<br>
-2 ./run.sh
+2 ./run.sh log_file
 
 output file format
 ---------------
