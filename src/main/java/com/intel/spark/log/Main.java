@@ -11,11 +11,13 @@ import com.intel.spark.log.util.TimeAdjuster;
 public class Main {
 	public static void main(String[] args) throws Exception {
 		if (args.length < 1) {
-			System.err.print("Please input Spark Driver's log file path.");
+			System.err.println("Please input Spark Driver's log file path.");
 			System.exit(1);
 		}
 		String fileStr = args[0];
 		processFile(fileStr);
+		System.out
+				.println("Complete analysis, please check output file(/tmp/job.csv, stage.csv, task.csv)");
 	}
 
 	private static void processFile(String fileStr) throws Exception {
