@@ -19,6 +19,8 @@ public abstract class Node<T1, T2> {
 	long startTime;
 	long endTime;
 	String name;
+	String id;
+	String duration;
 
 	public List<T1> getChildren() {
 		return children;
@@ -68,6 +70,22 @@ public abstract class Node<T1, T2> {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+	
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public String getDuration() {
+		return duration;
+	}
+
+	public void setDuration(String duration) {
+		this.duration = duration;
 	}
 
 	public T1 getLastChild() throws Exception {

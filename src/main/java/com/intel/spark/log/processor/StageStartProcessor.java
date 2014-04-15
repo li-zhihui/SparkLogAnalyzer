@@ -13,6 +13,8 @@ public class StageStartProcessor extends BaseProcessor {
 		job.addNewChild(stage);
 		initNode(stage);
 		stage.setStartTime(time);
+		stage.setId(super.subLogLine(6));
+		stage.setName(super.subLogLine(7).substring(1));
 	}
 
 }

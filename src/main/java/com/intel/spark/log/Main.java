@@ -29,6 +29,7 @@ public class Main {
 				}
 				processor.apply(line).process(app);
 			}
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 			return;

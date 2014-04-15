@@ -11,6 +11,8 @@ public class JobStartProcessor extends BaseProcessor {
 		initNode(job);
 		job.setStartTime(time);
 		app.addNewChild(job);
+		job.setName(super.subLogLine(6,7,8));
+		app.getContext().put(app.CURRENT_JOB, job);
 	}
 
 }
