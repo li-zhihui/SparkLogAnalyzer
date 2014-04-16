@@ -5,6 +5,7 @@ import java.io.FileReader;
 
 import com.intel.spark.log.model.App;
 import com.intel.spark.log.processor.Processor;
+import com.intel.spark.log.util.MemPrinter;
 import com.intel.spark.log.util.NodePrinter;
 import com.intel.spark.log.util.TimeAdjuster;
 
@@ -36,7 +37,8 @@ public class Main {
 			}
 			TimeAdjuster.adjustTime(app);
 			NodePrinter.print(app);
-		} catch (Exception e) {
+            MemPrinter.print(app);
+        } catch (Exception e) {
 			e.printStackTrace();
 			return;
 		} finally {

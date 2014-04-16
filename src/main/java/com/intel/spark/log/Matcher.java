@@ -4,15 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import com.intel.spark.log.processor.JobFinishProcessor;
-import com.intel.spark.log.processor.JobStartProcessor;
-import com.intel.spark.log.processor.Processor;
-import com.intel.spark.log.processor.StageFinishProcessor;
-import com.intel.spark.log.processor.StageStartProcessor;
-import com.intel.spark.log.processor.TaskFinishProcessor;
-import com.intel.spark.log.processor.TaskSetAddProcessor;
-import com.intel.spark.log.processor.TaskSetProcessor;
-import com.intel.spark.log.processor.TaskStartProcessor;
+import com.intel.spark.log.processor.*;
 
 public class Matcher {
 
@@ -30,6 +22,7 @@ public class Matcher {
 		map.put("(.*)DAGScheduler: Stage(.*)finished in(.*)",
 				new StageFinishProcessor());
 		map.put("(.*)SparkContext: Job finished(.*)", new JobFinishProcessor());
+        map.put("(.*)BlockManagerMasterActor.BlockManagerInfo: Added rdd(.*)", new MemProcessor());
 	}
 
 	public static Processor build(String line) throws Exception {
