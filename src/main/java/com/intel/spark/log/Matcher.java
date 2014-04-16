@@ -21,7 +21,7 @@ public class Matcher {
 				new TaskFinishProcessor());
 		map.put("(.*)DAGScheduler: Stage(.*)finished in(.*)",
 				new StageFinishProcessor());
-		map.put("(.*)SparkContext: Job finished(.*)", new JobFinishProcessor());
+		map.put("(.*)Job finished(.*)", new JobFinishProcessor());
         map.put("(.*)BlockManagerMasterActor.BlockManagerInfo: Added rdd(.*)", new MemProcessor());
 	}
 
